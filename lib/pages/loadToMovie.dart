@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 import 'dart:convert';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:horrify/services/keys.dart';
@@ -21,6 +21,7 @@ class _LoadToMovieState extends State<LoadToMovie> {
   @override
   Widget build(BuildContext context) {
     chosenMovie = ModalRoute.of(context).settings.arguments;
+    loadMovie();
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
