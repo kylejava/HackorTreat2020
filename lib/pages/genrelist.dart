@@ -22,14 +22,14 @@ class _GenreListState extends State<GenreList> {
             return GestureDetector(
               onTap: () =>
               {
-                Navigator.pushReplacementNamed(context, "/loadtogenre" , arguments: {
-                  'genreName': genres[index]['genre'],
-                  'genreId': genres[index]['netflixid']
+                Navigator.pushNamed(context, "/loadtogenre" , arguments: {
+                  'genreName': genres[index]['name'],
+                  'genreId': genres[index]['id']
                 })
 
               },
               child: Card(
-                child: Text(genres[index]['genre']),
+                child: Center(child: Text(genres[index]['name']),),
               ),
             );
           },
