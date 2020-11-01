@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-import 'package:horrify/services/keys.dart';
 
 class MovieList extends StatefulWidget {
   @override

@@ -34,7 +34,7 @@ class _LoadToMovieState extends State<LoadToMovie> {
 
             ),
           ),
-          SpinKitRing(
+          SpinKitFoldingCube(
             color: Colors.black,
             size: 50.0,
           )

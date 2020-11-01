@@ -49,7 +49,7 @@ class _LoadToGenreState extends State<LoadToGenre> {
 
             ),
           ),
-          SpinKitRing(
+          SpinKitFoldingCube(
             color: Colors.black,
             size: 50.0,
           )
