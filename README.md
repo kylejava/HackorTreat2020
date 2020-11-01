@@ -1,4 +1,4 @@
-# FrightNight Movies
+# FrightNight
 ### Find Your Next Favorite Scary Movie For A Spooky Night!
 
 ## Inspiration
