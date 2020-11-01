@@ -1,5 +1,5 @@
-# horrify
-
+# FrightNight Movies
+## Find Your Next Favorite Scary Film
 Hackathon Project for Hack or Treat 2020
 
 ## Getting Started

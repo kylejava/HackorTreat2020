@@ -13,7 +13,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void goToNextScreen(){
     if(mounted) {
 
-      int _start =3;
+      int _start =5;
       const oneSec = const Duration(seconds: 1);
       _timer = new Timer.periodic(
         oneSec,
@@ -45,10 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                  'Welcome To'
-              ),
-              Text('Horrify'),
+              Image(image: AssetImage('assets/logo.png')),
               SizedBox(
                 height: 100.0,
               ),

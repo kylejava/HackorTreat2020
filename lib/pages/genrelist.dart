@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:horrify/services/ListOfGenres.dart';
-
+import 'package:horrify/services/randomize.dart';
+import 'package:horrify/services/keys.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 class GenreList extends StatefulWidget {
   @override
   _GenreListState createState() => _GenreListState();
@@ -20,7 +23,7 @@ class _GenreListState extends State<GenreList> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('HORRIFY' , style: TextStyle(fontSize: 30.0),),
+          title: Text('FRIGHTNIGHT' , style: TextStyle(fontSize: 30.0),),
           backgroundColor: Colors.deepOrange,
         ),
 
@@ -57,8 +60,28 @@ class _GenreListState extends State<GenreList> {
           },
         ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print("work on this later");
+        onPressed: () async {
+          int movieid = await getRandomMovie();
+
+          var movieurl = 'https://api.themoviedb.org/3/movie/' + movieid.toString() + '?api_key=' + keys+'&language=en-US';
+          var movieresponse = await http.get(movieurl);
+
+           Map moviedata = jsonDecode(movieresponse.body);
+
+          var date = (moviedata['release_date']);
+          var linkToPhoto = 'https://image.tmdb.org/t/p/w220_and_h330_face' + moviedata['poster_path'];
+          Navigator.pushNamed(context, '/movie' , arguments: {
+            'name': moviedata['original_title'],
+            'information': moviedata['overview'],
+            'genre': moviedata['genres'],
+            'photo': linkToPhoto,
+            'date': date,
+            'runtime': moviedata['runtime'],
+
+          });
+
+
+
         },
         child: Icon(Icons.shuffle),
         backgroundColor: Colors.deepOrange,

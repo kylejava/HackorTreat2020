@@ -22,7 +22,7 @@ class _MovieListState extends State<MovieList> {
   Widget build(BuildContext context) {
 
     listOfMovies = ModalRoute.of(context).settings.arguments;
-    print(listOfMovies['genre']);
+    print(listOfMovies);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepOrange,
