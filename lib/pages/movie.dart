@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Movie extends StatefulWidget {
   @override
@@ -8,6 +9,14 @@ class Movie extends StatefulWidget {
 
 class _MovieState extends State<Movie> {
   Map movieDetails = {};
+  void _lauchURL() async{
+    var _url = 'https://www.google.com/search?q='+ movieDetails['name'];
+    if ( await canLaunch(_url) != null) {
+      await launch(_url);
+    } else {
+      throw 'Could not launch $_url';
+    }
+  }
   @override
   Widget build(BuildContext context) {
     movieDetails =  ModalRoute.of(context).settings.arguments;
@@ -16,6 +25,8 @@ class _MovieState extends State<Movie> {
       appBar: AppBar(
         backgroundColor: Colors.deepOrange,
         title: Text(movieDetails['name']),
+
+
       ),
       body: Padding(
         padding: EdgeInsets.all(25.0),
@@ -26,7 +37,7 @@ class _MovieState extends State<Movie> {
               alignment: Alignment.topCenter,
               child:  Image.network(movieDetails['photo']),
             ),
-            SizedBox(height: 50.0,),
+            SizedBox(height: 30.0,),
 
             Container(
               color: Colors.orange[50],
@@ -40,16 +51,17 @@ class _MovieState extends State<Movie> {
                         'Name of Movie: ',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
+                         fontSize:20.0,
 
                         ),
                       ),
                       Text(
                         movieDetails['name'],
-                        style: TextStyle(fontSize: 18.0),
+                        style: TextStyle(fontSize:20.0),
                       ),//DISPLAY
                     ],
                   ),//DISPLAY NAME
-                  SizedBox(height: 10.0,),
+                  SizedBox(height: 12.0,),
                   Row(
                     children: [
                       Expanded(
@@ -63,7 +75,7 @@ class _MovieState extends State<Movie> {
                       ),
                     ],
                   ),//DISPLAY info
-                  SizedBox(height: 10.0,),
+                  SizedBox(height: 12.0,),
                   Row(
                     children: [
                       Text(
@@ -74,10 +86,11 @@ class _MovieState extends State<Movie> {
                       ),
                       Text(
                         movieDetails['date'],
-
+                          style: TextStyle(fontSize: 16.0)
                       ),//DISPLAY Date
                     ],
                   ),
+                  SizedBox(height: 12.0,),
                   Row(
                     children: [
                       Text(
@@ -86,18 +99,20 @@ class _MovieState extends State<Movie> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      for (var i = 0; i < movieDetails['genre'].length; i++) Text(movieDetails['genre'][i]['name'] + ', ')
+                      for (var i = 0; i < movieDetails['genre'].length; i++) Text(movieDetails['genre'][i]['name'] + ', ' , style: TextStyle(fontSize: 16.0))
                     ],
                   ),
+                  SizedBox(height: 12.0,),
                   Row(
                     children: [
                       Text(
                         'Runtime: ',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
+
                         ),
                       ),
-                     Text(movieDetails['runtime'].toString() + ' Minutes')
+                     Text(movieDetails['runtime'].toString() + ' Minutes' , style: TextStyle(fontSize: 16.0),)
                     ],
                   ),//Display Genres
                 ],
@@ -107,8 +122,11 @@ class _MovieState extends State<Movie> {
 
         ),
       ),
+
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          _lauchURL();
+        },
         child: Icon(Icons.movie_creation_outlined ,color: Colors.black,),
         backgroundColor: Colors.yellow[100],
       ),

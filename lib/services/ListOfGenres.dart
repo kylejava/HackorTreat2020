@@ -3,15 +3,15 @@ List genres = [
   "name": "Halloween Themed Movies",
   "id": 3335},
   {
-    "name": "Family Themed Movies ",
+    "name": "Scary Family Movies ",
     "id": 18035
   },
   {
-    "name": "Mystery Themed Movies",
+    "name": "Mystery Movies",
     "id": 10092
   },
   {
-    "name": "Thriller Themed Movies",
+    "name": "Thriller Movies",
     "id": 9950
   },
   {
@@ -19,15 +19,23 @@ List genres = [
     "id": 183427
   },
   {
-  "name": "Horror Themed Movies",
+  "name": "Horror Movies",
   "id": 8087
   },
   {
-    "name": "Killer Clown Themed Movies",
+    "name": "Killer Clown Movies",
     "id":176691
   },
   {
-    "name": "Slasher Themed Movies",
+    "name": "Slasher Movies",
     "id": 12339
+  },
+  {
+    "name": "Murder Movies",
+    "id": 9826
+  },
+  {
+    "name": "Scary Children Book Movies",
+    "id": 15101
   }
   ];

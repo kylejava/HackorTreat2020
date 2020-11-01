@@ -8,13 +8,22 @@ class GenreList extends StatefulWidget {
 }
 
 class _GenreListState extends State<GenreList> {
+  List _colors = [
+    Colors.yellow[100],
+    Colors.orangeAccent[50],
+    Colors.orange[100],
+    Colors.red[100],
+    Colors.deepOrange,
+    Colors.yellowAccent
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Horrify'),
+          title: Text('HORRIFY' , style: TextStyle(fontSize: 30.0),),
           backgroundColor: Colors.deepOrange,
         ),
+
         body: GridView.builder(
           itemCount: genres.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
@@ -29,12 +38,31 @@ class _GenreListState extends State<GenreList> {
 
               },
               child: Card(
-                child: Center(child: Text(genres[index]['name']),),
+                color: _colors[index % _colors.length],
+                child: Center(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      genres[index]['name'],
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 30.0,
+                        fontWeight: FontWeight.bold
+                      ),
+                    ),
+                  ),
+                ),
               ),
             );
           },
         ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          print("work on this later");
+        },
+        child: Icon(Icons.shuffle),
+        backgroundColor: Colors.deepOrange,
+      ),
       );
-
   }
 }

@@ -8,6 +8,15 @@ class MovieList extends StatefulWidget {
 
 class _MovieListState extends State<MovieList> {
   Map listOfMovies ={};
+  List _colors = [
+    Colors.red[100],
+    Colors.yellowAccent,
+    Colors.orangeAccent[50],
+    Colors.orange[100],
+    Colors.yellow[100],
+    Colors.deepOrange,
+
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +37,20 @@ class _MovieListState extends State<MovieList> {
               print('txt')
             },
             child: Card(
-              child: Center(child: Text(listOfMovies['movies'][index]['name']),),
+              color: _colors[index % _colors.length],
+              child: Center(
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    listOfMovies['movies'][index]['name'],
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
             ),
           );
         },
